@@ -17,3 +17,6 @@ The "calories" menu will be a place to track calories consumed that day, set goa
 The "meals" menu allows users to save their favorite meals to the site. Meals will contain nutritional info from a specific amount of a meal. Once a meal is added, it can be added via calories menu to track daily eating. Meals can also be added through the "Menus" menu.
 
 The "Menus" menu will contain a list of non-user-specific menus found in the database. Users can add these to their meals and eventually to their calories page. Users can also create their own menus or even find recipes to add from the internet. Once a desireable menu is found, users can add the necessary ingredients to their shopping list. 
+
+
+http://3.144.241.39
