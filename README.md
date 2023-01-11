@@ -19,5 +19,5 @@ The "meals" menu allows users to save their favorite meals to the site. Meals wi
 The "Menus" menu will contain a list of non-user-specific menus found in the database. Users can add these to their meals and eventually to their calories page. Users can also create their own menus or even find recipes to add from the internet. Once a desireable menu is found, users can add the necessary ingredients to their shopping list. 
 
 
-http://18.221.93.101
-energystorm.click
+https://18.221.93.101
+https://energystorm.click
