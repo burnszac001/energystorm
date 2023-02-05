@@ -3,6 +3,7 @@ A site dedicated to tracking calorie intake, energy expenditure, and workout rou
 
 Changes made from the local repository can be committed and pushed to the cloud repository. 
 When changes are made to the cloud repository, they should be pulled to avoid merge conflicts.
+.sh files are used to consolidate lists of commands to be run one at a time in order. The deploy files are what we use to copy files to our caddy server.
 
 /* Elevator Pitch */
 Energy Storm is a site that can track everything nutrition and excercise in one easy-to-use place. There will no longer be a need to use multiple apps or excel spread sheets to track your progress. Energy Storm has everything you need all in one place. 
@@ -21,3 +22,4 @@ The "Menus" menu will contain a list of non-user-specific menus found in the dat
 
 https://18.221.93.101
 https://energystorm.click
+https://simon.energystorm.click
