@@ -1,0 +1,50 @@
+body { 
+    background: url("weights.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+header {
+    margin-top: 40px;
+    text-align: center;
+}
+
+
+.page-info {
+    margin-top: 200px;
+    text-align: center;
+}
+
+.yellow-pill {
+    border-radius: 4px;
+    background: #e99f4c;
+    padding: 15px;
+    text-decoration: none;
+}
+.yellow-pill:link {
+    color: inherit;
+}
+.yellow-pill:visited {
+    color: inherit;
+}
+
+.yellow-pill:hover {
+    cursor: pointer;
+}
+
+.yellow-pill:active {
+    color: inherit;
+}
+.yellow-pill:a
+
+footer {
+    padding: 20px 40px;
+}
+
+.footer-info {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+}
