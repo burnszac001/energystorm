@@ -7,6 +7,7 @@ A site dedicated to tracking calorie intake, energy expenditure, and workout rou
 3. .sh files are used to consolidate lists of commands to be run one at a time in order. The deploy files are what we use to copy files to our caddy server.
 4. Bootstrap classes: bg-dark, text-light, nav-bar, fixed-top, nav-item, nav-link, active can be placed on the link to set it as active for the page. 
 5. A class can be set to elements. Created objects can represent actual elements. 
+6. You can use document.createRange().createContextualFragment() to create element nodes from strings.
 
 
 
