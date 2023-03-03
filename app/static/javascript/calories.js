@@ -8,20 +8,22 @@ function hideItem (id) {
     itemEl.style.display = "none";
 }
 
-class FoodItem {
+class NutritionItem {
     name;
     calories;
     elemId;
     #id;
 
-    constructor (foodName, calorieAmount, id) {
-        this.name = foodName;
-        this.calories = Number(calorieAmount);
+
+    constructor (name, calories, id) {
+        this.name = name;
+        this.calories = Number(calories);
         this.#id = id;
         this.elemId = `food-item-${this.id}`;
     }
 
-    displayFoodItem () {
+
+    displayNutritionItem () {
         const newElem = document.createElement(`div`);
         let textElem = document.createTextNode(`${this.name}: ${this.calories} calories`);
         newElem.appendChild(textElem);
@@ -41,20 +43,32 @@ class FoodItem {
         self.parentNode.removeChild(self);
     }
 
+
     addCalories () {}
 }
 
 
-class CalorieTracker {
-    dailyCalorieGoal;
+class NutritionTracker {
+    calorieGoal;
+    proteinGoal;
     remainingCalories;
-    #foodItemsSize = 0;
-    #foodItems = [];
+    remainingProtein;
+    #nutritionItemsSize = 0;
+    #nutritionItems = [];
 
-    constructor (goal) {
-        this.dailyCalorieGoal = goal;
-        this.remainingCalories = goal;
+
+    constructor (calories, protein) {
+        this.calorieGoal = calories;
+        this.remainingCalories = this.calorieGoal;
+        this.proteinGoal = protein;
     }
+
+
+    displayCalorieGoal() {
+        const calorieGoalEl = document.querySelector("#calorie-goal");
+        calorieGoalEl.innerHTML = `${this.calorieGoal}`;
+    }
+
 
     displayRemainingCalories () {
         const remainingCaloriesElem = document.getElementById("calories-remaining");
@@ -66,9 +80,9 @@ class CalorieTracker {
         const goalInputEl = document.querySelector("#goal-input");
         const calorieGoalEl = document.querySelector("#calorie-goal");
 
-        this.remainingCalories -= (this.dailyCalorieGoal - goalInputEl.value);
-        this.dailyCalorieGoal = goalInputEl.value;
-        calorieGoalEl.innerHTML = `${this.dailyCalorieGoal}`;
+        this.remainingCalories -= (this.calorieGoal - goalInputEl.value);
+        this.calorieGoal = goalInputEl.value;
+        calorieGoalEl.innerHTML = `${this.calorieGoal}`;
 
         hideItem('setCalorieGoal');
         showItem('change-btn');
@@ -79,26 +93,29 @@ class CalorieTracker {
     addFoodItem () {
         const itemElems = document.getElementsByClassName("add-food-item");
 
-        const foodItem = new FoodItem(itemElems[0].value, itemElems[1].value, this.#foodItemsSize)
-        foodItem.displayFoodItem();
-        this.#foodItems.push(foodItem);
-        this.#foodItemsSize++;
+        const nutritionItem = new NutritionItem(itemElems[0].value, itemElems[1].value, this.#nutritionItemsSize)
+        nutritionItem.displayNutritionItem();
+        this.#nutritionItems.push(nutritionItem);
+        this.#nutritionItemsSize++;
 
-        this.remainingCalories -= foodItem.calories;
+        this.remainingCalories -= nutritionItem.calories;
         this.displayRemainingCalories();        
     }
 
+
     deleteFoodItem (index) {
-        const foodItem = this.#foodItems[index];
-        this.remainingCalories += foodItem.calories;
+        const nutritionItem = this.#nutritionItems[index];
+        this.remainingCalories += nutritionItem.calories;
         this.displayRemainingCalories();
-        foodItem.deleteSelf();
-        this.#foodItems.splice(index, 1);
+        nutritionItem.deleteSelf();
+        this.#nutritionItems.splice(index, 1);
+        this.#nutritionItemsSize--;
     }
+
 
 }
 
-const tracker = new CalorieTracker(2000);
-const calorieGoalEl = document.querySelector("#calorie-goal");
-calorieGoalEl.innerHTML = `${tracker.dailyCalorieGoal}`;
+
+const tracker = new NutritionTracker(2000, 50);
+tracker.displayCalorieGoal();
 tracker.displayRemainingCalories();
