@@ -16,7 +16,7 @@ class FoodItem {
 
     constructor (foodName, calorieAmount, id) {
         this.name = foodName;
-        this.calories = calorieAmount;
+        this.calories = Number(calorieAmount);
         this.#id = id;
         this.elemId = `food-item-${this.id}`;
     }
@@ -90,6 +90,8 @@ class CalorieTracker {
 
     deleteFoodItem (index) {
         const foodItem = this.#foodItems[index];
+        this.remainingCalories += foodItem.calories;
+        this.displayRemainingCalories();
         foodItem.deleteSelf();
         this.#foodItems.splice(index, 1);
     }
