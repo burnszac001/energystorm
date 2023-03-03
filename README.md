@@ -39,3 +39,4 @@ The "Menus" menu will contain a list of non-user-specific menus found in the dat
 https://18.221.93.101
 https://energystorm.click
 https://simon.energystorm.click
+https://startup.energystorm.click
