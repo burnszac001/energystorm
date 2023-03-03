@@ -22,7 +22,9 @@
     <div class="calorie-tracker">
         <h2>Today's Calories</h2>
         <p>Calories remaining <span id="calories-remaining"></span></p>
-        <div class="food-items"></div>
+
+        <div id="food-items"></div>
+
         <div id="add-food-item">
             <label for="food-name">Add Item</label>
             <input id="food-name" class="add-food-item" type="text" placeholder="Name">
@@ -30,6 +32,7 @@
             <input id="food-calories" class="add-food-item" type="number" max="35000" min="0" value="0">
             <button onclick="tracker.addFoodItem();">Add</button>
         </div>
+
     </div>
     <script src="../static/javascript/calories.js"></script>
 </body>
