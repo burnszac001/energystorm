@@ -19,7 +19,7 @@ class NutritionItem {
         this.name = name;
         this.calories = Number(calories);
         this.#id = id;
-        this.elemId = `food-item-${this.id}`;
+        this.elemId = `nutrition-item-${this.#id}`;
     }
 
 
@@ -54,7 +54,7 @@ class NutritionTracker {
     remainingCalories;
     remainingProtein;
     #nutritionItemsSize = 0;
-    #nutritionItems = [];
+    #nutritionItems = new Map();
 
 
     constructor (calories, protein) {
@@ -95,7 +95,7 @@ class NutritionTracker {
 
         const nutritionItem = new NutritionItem(itemElems[0].value, itemElems[1].value, this.#nutritionItemsSize)
         nutritionItem.displayNutritionItem();
-        this.#nutritionItems.push(nutritionItem);
+        this.#nutritionItems.set(`nutrition-item-${this.#nutritionItemsSize}`, nutritionItem);
         this.#nutritionItemsSize++;
 
         this.remainingCalories -= nutritionItem.calories;
@@ -103,13 +103,12 @@ class NutritionTracker {
     }
 
 
-    deleteFoodItem (index) {
-        const nutritionItem = this.#nutritionItems[index];
+    deleteFoodItem (id) {
+        const nutritionItem = this.#nutritionItems.get(`nutrition-item-${id}`);
         this.remainingCalories += nutritionItem.calories;
         this.displayRemainingCalories();
         nutritionItem.deleteSelf();
-        this.#nutritionItems.splice(index, 1);
-        this.#nutritionItemsSize--;
+        this.#nutritionItems.delete(`nutrition-item-${id}`);
     }
 
 
