@@ -24,17 +24,12 @@ class NutritionItem {
 
 
     displayNutritionItem () {
-        const newElem = document.createElement(`div`);
-        let textElem = document.createTextNode(`${this.name}: ${this.calories} calories`);
-        newElem.appendChild(textElem);
-        const btn = document.createRange().createContextualFragment(
-            `<button onclick="tracker.deleteFoodItem(${this.#id})">Delete</button>`
-        );
-        newElem.appendChild(btn);
-        newElem.setAttribute("id", this.elemId);
-
-        const foodItemsElem = document.getElementById("food-items");
-        foodItemsElem.appendChild(newElem);
+        const table = document.querySelector("#nutrition-items");
+        const row = table.insertRow(this.#id + 1);
+        row.insertCell(0).innerHTML = `<button onclick="tracker.deleteFoodItem(${this.#id})">Remove</button>`;
+        row.insertCell(1).innerHTML = this.name;
+        row.insertCell(2).innerHTML = this.calories;
+        row.setAttribute("id", this.elemId);
     }
 
 
@@ -50,6 +45,7 @@ class NutritionItem {
 
 class NutritionTracker {
     calorieGoal;
+    totalCalories = 0;
     proteinGoal;
     remainingCalories;
     remainingProtein;
@@ -70,7 +66,11 @@ class NutritionTracker {
     }
 
 
-    displayRemainingCalories () {
+    updateDisplayInfo () {
+        const remainingsRow = document.querySelector("#remainings-row");
+        const totalsRow = document.querySelector("#totals-row");
+        remainingsRow.cells[2].innerHTML = tracker.remainingCalories;
+        totalsRow.cells[2].innerHTML = tracker.totalCalories;
         const remainingCaloriesElem = document.getElementById("calories-remaining");
         remainingCaloriesElem.innerHTML = `${tracker.remainingCalories}`;
     }
@@ -86,7 +86,7 @@ class NutritionTracker {
 
         hideItem('setCalorieGoal');
         showItem('change-btn');
-        this.displayRemainingCalories();
+        this.updateDisplayInfo();
     }
 
 
@@ -98,17 +98,20 @@ class NutritionTracker {
         this.#nutritionItems.set(`nutrition-item-${this.#nutritionItemsSize}`, nutritionItem);
         this.#nutritionItemsSize++;
 
+        this.totalCalories += nutritionItem.calories;
         this.remainingCalories -= nutritionItem.calories;
-        this.displayRemainingCalories();        
+        this.updateDisplayInfo();        
     }
 
 
     deleteFoodItem (id) {
         const nutritionItem = this.#nutritionItems.get(`nutrition-item-${id}`);
+        this.totalCalories -= nutritionItem.calories;
         this.remainingCalories += nutritionItem.calories;
-        this.displayRemainingCalories();
+        this.updateDisplayInfo();
         nutritionItem.deleteSelf();
         this.#nutritionItems.delete(`nutrition-item-${id}`);
+        this.#nutritionItemsSize--;
     }
 
 
@@ -117,4 +120,4 @@ class NutritionTracker {
 
 const tracker = new NutritionTracker(2000, 50);
 tracker.displayCalorieGoal();
-tracker.displayRemainingCalories();
+tracker.updateDisplayInfo();

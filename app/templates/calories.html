@@ -24,14 +24,36 @@
         <p>Calories remaining <span id="calories-remaining"></span></p>
 
         <div id="food-items"></div>
+        <table id="nutrition-items">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Calories</th>
+            </tr>
+            <form onsubmit="tracker.addFoodItem(); return false;">
+                <td><button>Add</button></td>
+                <td><input id="food-name" class="add-food-item" type="text" placeholder="Name"></td>
+                <td><input id="food-calories" class="add-food-item" type="number" max="35000" min="0" value="0"></td>
+            </form>
+            <tr id="totals-row">
+                <td></td>
+                <td><b>Total</b></td>
+                <td></td>
+            </tr>
+            <tr id="remainings-row">
+                <td></td>
+                <td><b>Remaining</b></td>
+                <td></td>
+            </tr>
+        </table>
 
-        <div id="add-food-item">
+        <!-- <form onsubmit="tracker.addFoodItem(); return false;" id="add-food-item">
             <label for="food-name">Add Item</label>
             <input id="food-name" class="add-food-item" type="text" placeholder="Name">
             <label for="food-calories">Calories: </label>
             <input id="food-calories" class="add-food-item" type="number" max="35000" min="0" value="0">
-            <button onclick="tracker.addFoodItem();">Add</button>
-        </div>
+            <button >Add</button>
+        </form> -->
 
     </div>
     <script src="../static/javascript/calories.js"></script>
