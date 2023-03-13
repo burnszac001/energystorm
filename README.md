@@ -8,6 +8,13 @@ A site dedicated to tracking calorie intake, energy expenditure, and workout rou
 4. Bootstrap classes: bg-dark, text-light, nav-bar, fixed-top, nav-item, nav-link, active can be placed on the link to set it as active for the page. 
 5. A class can be set to elements. Created objects can represent actual elements. 
 6. You can use document.createRange().createContextualFragment() to create element nodes from strings.
+7. Using Express:   
+    The app is created using a new instance of the express class "const app = express();"
+    Then the app listens on a port "app.listen(port, () => {});"
+    The router is initiated using another class instance "var router = express.Router();"
+    The app uses the router with the "use" member function "app.use(path, router);"
+    The router class has member functions for each of the http requests "router.get(path, function); router.post(path, function);"
+
 
 
 
