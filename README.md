@@ -14,6 +14,7 @@ A site dedicated to tracking calorie intake, energy expenditure, and workout rou
     The router is initiated using another class instance "var router = express.Router();"
     The app uses the router with the "use" member function "app.use(path, router);"
     The router class has member functions for each of the http requests "router.get(path, function); router.post(path, function);"
+8. It's probably a good thing to be on the latest stable version of node from now on...
 
 
 
