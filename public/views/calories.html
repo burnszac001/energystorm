@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../static/styles/calories.css">
+
+    <title>Calorie Tracker</title>
+</head>
+<body>
+    <h1>Calorie Tracker</h1>
+    <p>Daily Calorie Goal: <span id="calorie-goal"></span></p>
+    <button id="change-btn" onclick="showItem('setCalorieGoal'); hideItem('change-btn')">Change Goal</button>
+    <div id="setCalorieGoal">
+        <label for="goal-input">Daily Calorie Goal</label>
+        <input id="goal-input" type="number" min="1" max="35000" value="2000">
+        <button onclick="tracker.updateCalorieGoal();">Change</button>
+        <a onclick="showItem('change-btn'); hideItem('setCalorieGoal');">Cancel</a>
+    </div>
+    <div class="calorie-tracker">
+        <h2>Today's Calories</h2>
+        <p>Calories remaining <span id="calories-remaining"></span></p>
+
+        <div id="food-items"></div>
+        <table id="nutrition-items">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Calories</th>
+            </tr>
+            <form onsubmit="tracker.addFoodItem(); return false;">
+                <td><button>Add</button></td>
+                <td><input id="food-name" class="add-food-item" type="text" placeholder="Name"></td>
+                <td><input id="food-calories" class="add-food-item" type="number" max="35000" min="0" value="0"></td>
+            </form>
+            <tr id="totals-row">
+                <td></td>
+                <td><b>Total</b></td>
+                <td></td>
+            </tr>
+            <tr id="remainings-row">
+                <td></td>
+                <td><b>Remaining</b></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <!-- <form onsubmit="tracker.addFoodItem(); return false;" id="add-food-item">
+            <label for="food-name">Add Item</label>
+            <input id="food-name" class="add-food-item" type="text" placeholder="Name">
+            <label for="food-calories">Calories: </label>
+            <input id="food-calories" class="add-food-item" type="number" max="35000" min="0" value="0">
+            <button >Add</button>
+        </form> -->
+
+    </div>
+    <script src="../static/javascript/calories.js"></script>
+</body>
+</html>

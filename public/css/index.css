@@ -1,0 +1,88 @@
+body { 
+    background: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url("../images/food.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+header {
+    margin-top: 40px;
+    text-align: center;
+}
+
+
+.page-info {
+    display: flex;
+    margin-top: 120px;
+    text-align: center;
+    justify-content: center;
+}
+
+.errorBar {
+    display: flex;
+    min-height: 50px;
+    padding: 0;
+    z-index: 1;
+    justify-content: center;
+}
+
+.errorMsg {
+    display: none;
+    font-size: 16px;
+    width: 60%;
+    padding: 12px;
+    background-color: rgba(158, 163, 168);
+    opacity: 0.7;
+    border-radius: 4px;
+}
+
+#login {
+    display: none;
+}
+
+#authForm {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-content: left;
+    margin-bottom: 15px;
+}
+
+.inputLabel {
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    text-align: left;
+}
+
+.authInput {
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 3px;
+    height: 30px;
+}
+
+#inputSubmit {
+    width: 50%;
+    align-self: end;
+    border: none;
+    border-radius: 3px;
+}
+
+#changeBtn {
+    user-select: none;
+    cursor: pointer;
+}
+
+
+
+footer {
+    padding: 20px 40px;
+}
+
+.footer-info {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+}
