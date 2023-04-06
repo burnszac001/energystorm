@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 
-const userCollection = require('../../config/database');
+const DB = require('../../config/database');
 
 
 const authGet = (req, res) => {
@@ -12,7 +12,7 @@ const authGet = (req, res) => {
 
 // Login User
 const loginUser = async (req, res) => {
-    const user = await userCollection.findOne({email: req.body.email})
+    const user = await DB.userCollection.findOne({email: req.body.email})
     if (user !== null) {
         if (await bcrypt.compare(req.body.password, user.password)) {
             setAuthCookie(res, user.token);
@@ -29,7 +29,7 @@ const loginUser = async (req, res) => {
 const registerUser = async (req, res) => {
     const userExists = await emailExists(req.body.email);
     if (!userExists) {
-        const user = createUser(req.body.email, req.body.password);
+        const user = await createUser(req.body.email, req.body.password);
         setAuthCookie(res, user.token);
         res.send({id: user._id})
     } else {
@@ -39,7 +39,7 @@ const registerUser = async (req, res) => {
 
 
 async function emailExists (email) {
-    const user = await userCollection.findOne({email: email});
+    const user = await DB.userCollection.findOne({email: email});
     if (user !== null) {
         return true;
     } else {
@@ -56,7 +56,7 @@ async function createUser (email, password) {
         password: passwordHash,
         token: uuid.v4(),
     };
-    await userCollection.insertOne(user);
+    await DB.userCollection.insertOne(user);
 
     return user;
 }
@@ -67,7 +67,14 @@ function setAuthCookie(res, authToken) {
         secure: true,
         httpOnly: true,
         sameSite: 'strict'
-    })
+    });
+}
+
+
+// Logout Route
+function logoutRoute(res, res) {
+    res.clearCookie('token');
+    res.status(204).end();
 }
 
 
@@ -75,5 +82,6 @@ function setAuthCookie(res, authToken) {
 module.exports = {
     authGet,
     loginUser,
-    registerUser
+    registerUser, 
+    logoutRoute
 };

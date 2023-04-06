@@ -117,6 +117,12 @@ class NutritionTracker {
 
 }
 
+function logout() {
+    fetch('/auth/logout', {
+        method: 'DELETE'
+    }).then(() => (window.location.href = '/'));
+}
+
 
 const tracker = new NutritionTracker(2000, 50);
 tracker.displayCalorieGoal();

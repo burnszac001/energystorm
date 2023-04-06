@@ -59,5 +59,5 @@ function displayError(message) {
     errorMsg.style.display = "block";
     setTimeout(() => {
         errorMsg.style.display = "none";
-    }, 10000);
+    }, 15000);
 }

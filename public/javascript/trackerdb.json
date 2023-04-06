@@ -1,0 +1,21 @@
+{
+    "_id": "13435144563451354",
+    "email": "zacharyburns001@gmail.com",
+    "password": "hashed password", 
+    "goal": 1700,
+    "days": [
+        {
+            "date": "05-04-2023",
+            "alternateGoal": null,
+            "caloriesEaten": 1000,
+            "foodItems": [
+                    {
+                    "name": "chicken",
+                    "amount": "4oz",
+                    "calories": 200,
+                    "protein": 36
+                }
+            ]
+        }
+    ]
+}

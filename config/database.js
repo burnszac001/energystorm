@@ -14,5 +14,6 @@ const url = `mongodb+srv://${user}:${password}@${hostname}`
 const client = new MongoClient(url);
 
 const userCollection = client.db('energystorm').collection('user');
+const daysCollection = client.db('energystorm').collection('days')
 
-module.exports = userCollection;
+module.exports = { userCollection, daysCollection };

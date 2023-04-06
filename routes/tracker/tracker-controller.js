@@ -1,7 +1,7 @@
 const express = require('express');
 
 const trackerGet = (req, res) => {
-    res.json("getting from /tracker");
+    res.sendFile('./views/tracker.html', { root: 'public' });
 };
 
 const trackerPost = (req, res) => {

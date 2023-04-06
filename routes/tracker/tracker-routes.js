@@ -1,10 +1,22 @@
 const express = require('express');
+const DB = require('../../config/database');
 
 const { trackerGet, trackerPost } = require('./tracker-controller');
 
-const router = express.Router();
+const secureRouter = express.Router();
 
-router.get('/', trackerGet);
-router.post('/', trackerPost);
+secureRouter.use(async (req, res, next) => {
+    const authToken = req.cookies['token'];
+    const user = await DB.userCollection.findOne({token: authToken});
+    if (user) {
+        next();
+    } else {
+        res.redirect('/');
+    }
+});
 
-module.exports = router;
+
+secureRouter.get('/', trackerGet);
+secureRouter.post('/', trackerPost);
+
+module.exports = secureRouter;
