@@ -21,7 +21,6 @@
     </div>
     <div class="calorie-tracker">
         <h2>Today's Calories</h2>
-        <p>Calories remaining <span id="calories-remaining"></span></p>
 
         <div id="food-items"></div>
         <table id="nutrition-items">
@@ -29,21 +28,25 @@
                 <th></th>
                 <th>Name</th>
                 <th>Calories</th>
+                <th>Protein</th>
             </tr>
-            <form onsubmit="tracker.addFoodItem(); return false;">
-                <td><button>Add</button></td>
+            <form >
+                <td><button type="button" onclick="tracker.addFoodItem();">Add</button></td>
                 <td><input id="food-name" class="add-food-item" type="text" placeholder="Name"></td>
-                <td><input id="food-calories" class="add-food-item" type="number" max="35000" min="0" value="0"></td>
+                <td><input id="food-calories" class="add-food-item" type="number" min="0" value="0"></td>
+                <td><input id="food-protein" class="add-food-item" type="number" min="0" value="0"></td>
             </form>
             <tr id="totals-row">
                 <td></td>
                 <td><b>Total</b></td>
-                <td></td>
+                <td id="totalCalories"></td>
+                <td id="totalProtein"></td>
             </tr>
             <tr id="remainings-row">
                 <td></td>
                 <td><b>Remaining</b></td>
-                <td></td>
+                <td id="remainingCalories"></td>
+                <td id="remainingProtein"></td>
             </tr>
         </table>
         <button onclick="logout()">Logout</button>

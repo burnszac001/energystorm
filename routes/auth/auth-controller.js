@@ -24,6 +24,17 @@ const loginUser = async (req, res) => {
 }
 
 
+const checkLoginStatus = async (req, res, next) => {
+    const authToken = req.cookies['token'];
+    const user = await DB.userCollection.findOne({token: authToken});
+    if (user) {
+        next();
+    } else {
+        res.redirect('/');
+    }
+}
+
+
 
 // Register User
 const registerUser = async (req, res) => {
@@ -53,6 +64,8 @@ async function createUser (email, password) {
 
     const user = {
         email: email,
+        calorieGoal: 2000,
+        proteinGoal: 50,
         password: passwordHash,
         token: uuid.v4(),
     };
